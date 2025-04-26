@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card security-card">
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-plus fa-3x security-icon mb-3"></i>
+                        <h1 class="h3">Créer un compte</h1>
+                        <p class="text-muted">Rejoignez NetSecurePro pour accéder à nos services de cybersécurité</p>
+                    </div>
+                    
+                    <form method="post" action="{{ url_for('register') }}" class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="username" class="form-label">Nom d'utilisateur</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Choisir un nom d'utilisateur" required>
+                                    <div class="invalid-feedback">
+                                        Veuillez choisir un nom d'utilisateur.
+                                    </div>
+                                </div>
+                                <div class="form-text">Utilisé pour la connexion, doit être unique.</div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="vous@exemple.com" required>
+                                    <div class="invalid-feedback">
+                                        Veuillez entrer une adresse email valide.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="first_name" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Votre prénom">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="last_name" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Votre nom">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Mot de passe</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Choisir un mot de passe" required>
+                                    <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <div class="invalid-feedback">
+                                        Veuillez choisir un mot de passe.
+                                    </div>
+                                </div>
+                                <div id="passwordStrength" class="mt-2"></div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="confirm_password" class="form-label">Confirmer le mot de passe</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Répéter le mot de passe" required>
+                                    <div class="invalid-feedback">
+                                        Les mots de passe ne correspondent pas.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        J'accepte les <a href="#" class="text-decoration-none">conditions d'utilisation</a> et la <a href="#" class="text-decoration-none">politique de confidentialité</a>
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        Vous devez accepter avant de vous inscrire.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary btn-lg">S'inscrire</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p>Vous avez déjà un compte? <a href="{{ url_for('login') }}" class="text-decoration-none">Connectez-vous</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4 bg-body-tertiary border-0">
+                <div class="card-body p-3">
+                    <h5 class="mb-3"><i class="fas fa-shield-alt text-primary me-2"></i> Pourquoi créer un compte?</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Accès au tableau de bord de sécurité</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Rapports de sécurité personnalisés</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Alertes de sécurité en temps réel</li>
+                                <li><i class="fas fa-check-circle text-success me-2"></i> Support technique prioritaire</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle password visibility
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm_password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+        
+        // Password strength indicator
+        const passwordStrength = document.getElementById('passwordStrength');
+        password.addEventListener('input', function() {
+            const val = this.value;
+            
+            // Réinitialiser
+            passwordStrength.className = '';
+            passwordStrength.innerHTML = '';
+            
+            if (!val) return;
+            
+            // Vérifier la force du mot de passe
+            let strength = 0;
+            
+            // Au moins 8 caractères
+            if (val.length >= 8) strength += 1;
+            
+            // Lettres majuscules et minuscules
+            if (val.match(/[a-z]/) && val.match(/[A-Z]/)) strength += 1;
+            
+            // Chiffres
+            if (val.match(/\d/)) strength += 1;
+            
+            // Caractères spéciaux
+            if (val.match(/[^a-zA-Z\d]/)) strength += 1;
+            
+            // Afficher l'indicateur
+            const strengthText = ['Faible', 'Moyen', 'Fort', 'Très fort'];
+            const strengthClass = ['text-danger', 'text-warning', 'text-info', 'text-success'];
+            
+            passwordStrength.innerHTML = `Force du mot de passe: <span class="${strengthClass[strength-1]}">${strengthText[strength-1]}</span>`;
+        });
+        
+        // Check if passwords match
+        confirmPassword.addEventListener('input', function() {
+            if (this.value !== password.value) {
+                this.setCustomValidity('Les mots de passe ne correspondent pas');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+        
+        // Validation form on submit
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            if (!this.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            this.classList.add('was-validated');
+        });
+    });
+</script>
+{% endblock %}

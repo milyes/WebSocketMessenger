@@ -1,0 +1,89 @@
+/* custom.css - Styles personnalisés pour l'application NetSecurePro 
+   Note: Nous utilisons Bootstrap pour la majorité du styling, 
+   ce fichier ne contient que des ajustements spécifiques */
+
+/* Variables personnalisées */
+:root {
+  --netsecure-primary: #0d6efd;
+  --netsecure-secondary: #6c757d;
+  --netsecure-accent: #00c3ff;
+}
+
+/* Styles généraux */
+.security-icon {
+  color: var(--netsecure-accent);
+  margin-right: 0.5rem;
+}
+
+/* Animation pour les éléments de sécurité */
+.security-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Styles pour les cartes de cybersécurité */
+.security-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-left: 4px solid var(--netsecure-accent);
+}
+
+.security-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles pour les indicateurs de sécurité */
+.security-status {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+}
+
+.status-secure {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.status-warning {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.status-danger {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+/* Styles pour le footer */
+.footer {
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Ajustements pour les pages d'erreur */
+.error-page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Responsive design ajustements */
+@media (max-width: 768px) {
+  .security-card {
+    margin-bottom: 1.5rem;
+  }
+}

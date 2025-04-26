@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4 text-center">Contactez-nous</h1>
+            <p class="lead text-center mb-5">Nous sommes là pour répondre à vos questions et vous accompagner dans la sécurisation de votre infrastructure numérique.</p>
+            
+            <div class="row mb-5">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-circle">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h5 class="card-title">Adresse</h5>
+                            <p class="card-text">123 Avenue de la Cybersécurité<br>75000 Paris, France</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-circle">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <h5 class="card-title">Téléphone</h5>
+                            <p class="card-text">+33 1 23 45 67 89<br>Du lundi au vendredi, 9h-18h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-circle">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h5 class="card-title">Email</h5>
+                            <p class="card-text">info@netsecurepro.com<br>support@netsecurepro.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-5">
+                <div class="card-body p-4">
+                    <h2 class="card-title h4 mb-4"><i class="fas fa-paper-plane me-2 security-icon"></i> Envoyez-nous un message</h2>
+                    
+                    <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Veuillez entrer votre prénom.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Veuillez entrer votre nom.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="vous@exemple.com" required>
+                                <div class="invalid-feedback">
+                                    Veuillez entrer une adresse email valide.
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Téléphone</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="+33 1 23 45 67 89">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="company" class="form-label">Entreprise</label>
+                                <input type="text" class="form-control" id="company" placeholder="Nom de votre entreprise">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="subject" class="form-label">Sujet</label>
+                                <select class="form-select" id="subject" required>
+                                    <option value="">Choisir...</option>
+                                    <option value="inquiry">Demande d'informations</option>
+                                    <option value="quote">Demande de devis</option>
+                                    <option value="support">Support technique</option>
+                                    <option value="partnership">Partenariat</option>
+                                    <option value="other">Autre</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Veuillez sélectionner un sujet.
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                                <div class="invalid-feedback">
+                                    Veuillez entrer votre message.
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="privacy" required>
+                                    <label class="form-check-label" for="privacy">J'accepte que mes données soient traitées conformément à la politique de confidentialité</label>
+                                    <div class="invalid-feedback">
+                                        Vous devez accepter avant de soumettre.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 text-center mt-4">
+                                <button class="btn btn-primary btn-lg" type="submit">Envoyer le message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card bg-body-tertiary border-0 p-4">
+                <div class="card-body">
+                    <h2 class="card-title h4 mb-4"><i class="fas fa-question-circle me-2 security-icon"></i> Questions fréquentes</h2>
+                    
+                    <div class="accordion" id="accordionFAQ">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Quels types d'entreprises peuvent bénéficier de vos services?
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Nos services s'adressent aux entreprises de toutes tailles, des PME aux grandes organisations. Nous adaptons nos solutions en fonction des besoins spécifiques de chaque client, de son secteur d'activité et de son niveau de maturité en matière de cybersécurité.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Comment se déroule une première consultation?
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    La première consultation est généralement gratuite et peut se faire en personne ou à distance. Nous discutons de vos besoins, de vos préoccupations en matière de sécurité et de votre infrastructure actuelle. À partir de là, nous pouvons vous proposer une évaluation plus approfondie ou des solutions adaptées à votre situation.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Quels sont vos délais d'intervention en cas d'incident?
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Pour nos clients bénéficiant du service SOC, la surveillance est continue et la réponse aux alertes est immédiate. Pour les interventions d'urgence, nous nous engageons à répondre dans l'heure qui suit votre appel et à mobiliser une équipe d'experts dans les plus brefs délais, généralement sous 4 heures.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Proposez-vous des formations en cybersécurité?
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Oui, nous proposons diverses formations en cybersécurité adaptées à différents publics : sensibilisation générale pour tous les employés, formations spécifiques pour les équipes IT, et formations avancées pour les professionnels de la sécurité. Ces formations peuvent être dispensées en présentiel ou à distance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Validation du formulaire
+    document.addEventListener('DOMContentLoaded', function() {
+        const forms = document.querySelectorAll('.needs-validation');
+        
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    // Dans une vraie application, vous enverriez les données du formulaire à un serveur
+                    // Pour cette démonstration, nous affichons simplement une notification
+                    event.preventDefault();
+                    showNotification('Votre message a été envoyé avec succès! Nous vous contacterons bientôt.', 'success');
+                    form.reset();
+                    form.classList.remove('was-validated');
+                }
+                
+                form.classList.add('was-validated');
+            }, false);
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-5 text-center">Nos services de cybersécurité</h1>
+    
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <p class="lead text-center">NetSecurePro propose une gamme complète de services de cybersécurité conçus pour protéger votre entreprise contre les menaces numériques actuelles et futures.</p>
+        </div>
+    </div>
+
+    <!-- Services principaux -->
+    <div class="row g-4 mb-5">
+        <!-- Service 1 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 security-card">
+                <div class="card-body">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-2 rounded">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="card-title h4">Protection des infrastructures</h3>
+                    <p class="card-text">Solutions complètes pour sécuriser vos réseaux, systèmes et données contre les attaques externes et internes.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Pare-feu nouvelle génération</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Systèmes de détection d'intrusion</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Protection des endpoints</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Sécurisation du cloud</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 security-card">
+                <div class="card-body">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-2 rounded">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="card-title h4">Gestion des identités</h3>
+                    <p class="card-text">Contrôlez l'accès à vos systèmes et données avec des solutions d'authentification robustes et une gestion efficace des identités.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Authentification multi-facteurs</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Single Sign-On (SSO)</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Gestion des accès privilégiés</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Contrôle d'accès basé sur les rôles</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 security-card">
+                <div class="card-body">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-2 rounded">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3 class="card-title h4">Tests d'intrusion</h3>
+                    <p class="card-text">Évaluez la sécurité de votre infrastructure avec des tests d'intrusion réalisés par nos experts certifiés.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Tests de pénétration externes</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Tests de pénétration internes</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Tests d'applications web</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Simulations d'attaques ciblées</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service 4 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 security-card">
+                <div class="card-body">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-2 rounded">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="card-title h4">DevSecOps</h3>
+                    <p class="card-text">Intégrez la sécurité dans votre cycle de développement logiciel pour détecter et corriger les vulnérabilités dès le début.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Analyse de code statique</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Tests de sécurité automatisés</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Sécurité des conteneurs</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Pipelines CI/CD sécurisés</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service 5 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 security-card">
+                <div class="card-body">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-2 rounded">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="card-title h4">SOC as a Service</h3>
+                    <p class="card-text">Centre d'opérations de sécurité managé offrant une surveillance continue et une réponse rapide aux incidents de sécurité.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Surveillance 24/7/365</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Détection des menaces avancées</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Analyse des journaux</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Réponse aux incidents</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Service 6 -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 security-card">
+                <div class="card-body">
+                    <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-2 rounded">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="card-title h4">Formation et sensibilisation</h3>
+                    <p class="card-text">Programmes de formation sur mesure pour sensibiliser vos employés aux bonnes pratiques de cybersécurité.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Formations en ligne</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Simulations de phishing</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Ateliers pratiques</li>
+                        <li><i class="fas fa-check-circle text-success me-2"></i> Formations spécialisées</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Section consultance -->
+    <div class="bg-body-tertiary p-5 rounded-3 mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Services de consultance</h2>
+                <p class="lead">Nos experts en cybersécurité vous accompagnent dans la définition et la mise en œuvre de votre stratégie de sécurité.</p>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-angle-right text-primary me-2"></i> Audit de sécurité</li>
+                            <li class="mb-2"><i class="fas fa-angle-right text-primary me-2"></i> Analyse des risques</li>
+                            <li class="mb-2"><i class="fas fa-angle-right text-primary me-2"></i> Plan de réponse aux incidents</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-angle-right text-primary me-2"></i> Conformité réglementaire</li>
+                            <li class="mb-2"><i class="fas fa-angle-right text-primary me-2"></i> Architecture de sécurité</li>
+                            <li class="mb-2"><i class="fas fa-angle-right text-primary me-2"></i> Gouvernance de la sécurité</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary mt-4">Demander un devis</a>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0 text-center">
+                <div class="p-4 rounded-circle bg-primary mx-auto d-flex align-items-center justify-content-center" style="width: 160px; height: 160px;">
+                    <i class="fas fa-clipboard-check fa-4x text-white"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Témoignages -->
+    <h2 class="text-center mb-4">Ce que nos clients disent</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center mb-3">
+                        <i class="fas fa-quote-left fa-2x text-primary"></i>
+                    </div>
+                    <p class="card-text">NetSecurePro a considérablement renforcé notre posture de sécurité. Leur équipe d'experts a su identifier des vulnérabilités que nous n'avions pas détectées et nous a aidés à les corriger rapidement.</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="mb-0">Pierre Durand</h5>
+                            <p class="text-muted mb-0">DSI, Entreprise de Finance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center mb-3">
+                        <i class="fas fa-quote-left fa-2x text-primary"></i>
+                    </div>
+                    <p class="card-text">La formation en sensibilisation à la cybersécurité proposée par NetSecurePro a été très bien accueillie par nos équipes. Le contenu était pertinent et adapté à nos besoins spécifiques.</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="mb-0">Marie Lefèvre</h5>
+                            <p class="text-muted mb-0">RH, Entreprise de Santé</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center mb-3">
+                        <i class="fas fa-quote-left fa-2x text-primary"></i>
+                    </div>
+                    <p class="card-text">Le service SOC as a Service de NetSecurePro nous a permis de détecter et de neutraliser une tentative d'intrusion avant qu'elle ne cause des dommages. Leur équipe a été réactive et professionnelle.</p>
+                    <div class="d-flex align-items-center mt-3">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h5 class="mb-0">Jean Dupont</h5>
+                            <p class="text-muted mb-0">CEO, Startup Tech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Call to action -->
+    <div class="text-center mt-5 p-5 bg-primary rounded-3">
+        <h2 class="text-white mb-4">Prêt à sécuriser votre entreprise?</h2>
+        <p class="lead text-white mb-4">Contactez-nous dès aujourd'hui pour discuter de vos besoins en matière de cybersécurité.</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Nous contacter</a>
+    </div>
+</div>
+{% endblock %}

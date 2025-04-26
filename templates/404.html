@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5 error-page">
+    <div class="text-center">
+        <i class="fas fa-exclamation-triangle fa-5x text-warning mb-4"></i>
+        <h1 class="display-1 fw-bold">404</h1>
+        <h2 class="mb-4">Page non trouvée</h2>
+        <p class="lead mb-5">La page que vous recherchez n'existe pas ou a été déplacée.</p>
+        <div class="d-flex justify-content-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary me-3">
+                <i class="fas fa-home me-2"></i> Retour à l'accueil
+            </a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-primary">
+                <i class="fas fa-envelope me-2"></i> Nous contacter
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

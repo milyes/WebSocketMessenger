@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5 error-page">
+    <div class="text-center">
+        <i class="fas fa-bug fa-5x text-danger mb-4"></i>
+        <h1 class="display-1 fw-bold">500</h1>
+        <h2 class="mb-4">Erreur serveur</h2>
+        <p class="lead mb-5">Une erreur s'est produite sur le serveur. Notre équipe technique a été informée du problème.</p>
+        <div class="d-flex justify-content-center">
+            <a href="{{ url_for('index') }}" class="btn btn-primary me-3">
+                <i class="fas fa-home me-2"></i> Retour à l'accueil
+            </a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-primary">
+                <i class="fas fa-envelope me-2"></i> Nous contacter
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

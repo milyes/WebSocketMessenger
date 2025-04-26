@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card security-card">
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-lock fa-3x security-icon mb-3"></i>
+                        <h1 class="h3">Connexion</h1>
+                        <p class="text-muted">Accédez à votre compte NetSecurePro</p>
+                    </div>
+                    
+                    <form method="post" action="{{ url_for('login') }}" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nom d'utilisateur</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Votre nom d'utilisateur" required autofocus>
+                                <div class="invalid-feedback">
+                                    Veuillez entrer votre nom d'utilisateur.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label for="password" class="form-label">Mot de passe</label>
+                                <a href="#" class="text-decoration-none small">Mot de passe oublié?</a>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe" required>
+                                <div class="invalid-feedback">
+                                    Veuillez entrer votre mot de passe.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Se connecter</button>
+                        </div>
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p>Vous n'avez pas de compte? <a href="{{ url_for('register') }}" class="text-decoration-none">Inscrivez-vous</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4 bg-body-tertiary border-0">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-shield-alt text-primary me-3"></i>
+                        <div>
+                            <h5 class="mb-1">Connexion sécurisée</h5>
+                            <p class="small text-muted mb-0">Votre connexion est protégée par un chiffrement SSL/TLS et nos protocoles de sécurité avancés.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Toggle password visibility
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordField = document.getElementById('password');
+        const togglePassword = document.createElement('button');
+        togglePassword.type = 'button';
+        togglePassword.className = 'btn btn-outline-secondary';
+        togglePassword.innerHTML = '<i class="fas fa-eye"></i>';
+        togglePassword.title = 'Afficher/Masquer le mot de passe';
+        
+        // Insérer le bouton dans l'input group
+        passwordField.parentNode.appendChild(togglePassword);
+        
+        // Ajouter l'événement de toggle
+        togglePassword.addEventListener('click', function() {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+            togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+    });
+</script>
+{% endblock %}
