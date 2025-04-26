@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="mb-4">Tableau de bord de sécurité</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-user me-2"></i>Profil</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Compte créé le:</strong> {{ user.created_at.strftime('%d/%m/%Y') }}</p>
+                    <p><strong>Rôle:</strong> {{ user.role|capitalize }}</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">Modifier le profil</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Statut de sécurité</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 rounded bg-success bg-opacity-25">
+                                <i class="fas fa-lock fa-2x mb-2 text-success"></i>
+                                <h6>Firewall</h6>
+                                <p class="mb-0 badge bg-success">Actif</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 rounded bg-info bg-opacity-25">
+                                <i class="fas fa-virus-slash fa-2x mb-2 text-info"></i>
+                                <h6>Antivirus</h6>
+                                <p class="mb-0 badge bg-info">À jour</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 rounded bg-primary bg-opacity-25">
+                                <i class="fas fa-tasks fa-2x mb-2 text-primary"></i>
+                                <h6>Scans</h6>
+                                <p class="mb-0 badge bg-primary">Terminé</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="p-3 rounded bg-warning bg-opacity-25">
+                                <i class="fas fa-exclamation-triangle fa-2x mb-2 text-warning"></i>
+                                <h6>Menaces</h6>
+                                <p class="mb-0 badge bg-warning">{{ alerts|length }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-primary" id="scan-btn">
+                            <i class="fas fa-search me-2"></i>Lancer un scan de sécurité
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0"><i class="fas fa-exclamation-circle me-2"></i>Alertes récentes</h5>
+                </div>
+                <div class="card-body">
+                    {% if alerts %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Sévérité</th>
+                                    <th>Date</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for alert in alerts %}
+                                <tr>
+                                    <td>{{ alert.title }}</td>
+                                    <td>
+                                        {% if alert.severity == 'critical' %}
+                                        <span class="badge bg-danger">Critique</span>
+                                        {% elif alert.severity == 'high' %}
+                                        <span class="badge bg-warning">Élevée</span>
+                                        {% elif alert.severity == 'medium' %}
+                                        <span class="badge bg-info">Moyenne</span>
+                                        {% else %}
+                                        <span class="badge bg-success">Faible</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ alert.created_at.strftime('%d/%m/%Y') }}</td>
+                                    <td>
+                                        {% if alert.resolved %}
+                                        <span class="badge bg-success">Résolu</span>
+                                        {% else %}
+                                        <span class="badge bg-danger">Non résolu</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                        <p class="mb-0">Aucune alerte de sécurité active.</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer bg-transparent border-top-0 text-end">
+                    <a href="#" class="btn btn-sm btn-outline-warning">Voir toutes les alertes</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-history me-2"></i>Journaux d'activité</h5>
+                </div>
+                <div class="card-body">
+                    {% if logs %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for log in logs %}
+                                <tr>
+                                    <td>
+                                        {% if log.event_type == 'login' %}
+                                        <span class="badge bg-primary">Connexion</span>
+                                        {% elif log.event_type == 'logout' %}
+                                        <span class="badge bg-secondary">Déconnexion</span>
+                                        {% elif log.event_type == 'failed_login' %}
+                                        <span class="badge bg-danger">Échec connexion</span>
+                                        {% else %}
+                                        <span class="badge bg-info">{{ log.event_type }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ log.description }}</td>
+                                    <td>{{ log.timestamp.strftime('%d/%m/%Y %H:%M') }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-calendar-alt fa-3x text-secondary mb-3"></i>
+                        <p class="mb-0">Aucune activité récente.</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="card-footer bg-transparent border-top-0 text-end">
+                    <a href="#" class="btn btn-sm btn-outline-secondary">Voir tous les journaux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Simuler un scan de sécurité lorsque le bouton est cliqué
+    const scanBtn = document.getElementById('scan-btn');
+    if (scanBtn) {
+        scanBtn.addEventListener('click', function() {
+            const originalText = scanBtn.innerHTML;
+            scanBtn.disabled = true;
+            scanBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Scan en cours...';
+            
+            // Simuler un délai pour le scan
+            setTimeout(function() {
+                scanBtn.innerHTML = '<i class="fas fa-check-circle me-2"></i>Scan terminé';
+                
+                // Afficher une notification
+                const alertPlaceholder = document.getElementById('alert-placeholder');
+                if (alertPlaceholder) {
+                    const alert = document.createElement('div');
+                    alert.className = 'alert alert-success alert-dismissible fade show';
+                    alert.setAttribute('role', 'alert');
+                    alert.innerHTML = `
+                        <strong>Scan terminé!</strong> Aucune menace détectée sur votre système.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    `;
+                    alertPlaceholder.appendChild(alert);
+                }
+                
+                // Réactiver le bouton après un délai
+                setTimeout(function() {
+                    scanBtn.disabled = false;
+                    scanBtn.innerHTML = originalText;
+                }, 3000);
+            }, 2000);
+        });
+    }
+});
+</script>
+{% endblock %}

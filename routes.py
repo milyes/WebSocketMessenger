@@ -3,6 +3,7 @@
 
 import logging
 from flask import render_template, request, redirect, url_for, flash, jsonify, session
+from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db
 from models import User, SecurityAlert, SecurityLog
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -50,7 +51,6 @@ def login():
         user = User.query.filter_by(username=username).first()
         
         if user and check_password_hash(user.password_hash, password):
-            from flask_login import login_user
             login_user(user, remember=True)
             flash('Connexion réussie!', 'success')
             logger.info(f"Connexion réussie pour l'utilisateur: {username}")
@@ -111,9 +111,10 @@ def register():
 @app.route('/logout')
 def logout():
     """Route pour la déconnexion"""
-    session.pop('user_id', None)
+    if current_user.is_authenticated:
+        logger.info(f"Déconnexion de l'utilisateur: {current_user.username}")
+        logout_user()
     flash('Vous avez été déconnecté.', 'info')
-    logger.info("Utilisateur déconnecté")
     return redirect(url_for('index'))
 
 
@@ -129,6 +130,28 @@ def internal_server_error(e):
     """Gestionnaire pour les erreurs 500"""
     logger.error(f"Erreur serveur interne: {str(e)}")
     return render_template('500.html', title="Erreur serveur"), 500
+
+
+# Route pour le tableau de bord utilisateur (nécessite une authentification)
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    """Route pour le tableau de bord utilisateur"""
+    logger.debug(f"Accès au tableau de bord par l'utilisateur: {current_user.username}")
+    
+    # Récupérer les alertes de sécurité pour l'utilisateur
+    alerts = SecurityAlert.query.filter_by(user_id=current_user.id).order_by(SecurityAlert.created_at.desc()).limit(5).all()
+    
+    # Récupérer les journaux de sécurité pour l'utilisateur
+    logs = SecurityLog.query.filter_by(user_id=current_user.id).order_by(SecurityLog.timestamp.desc()).limit(10).all()
+    
+    return render_template(
+        'dashboard.html',
+        title=f"Tableau de bord - {current_user.username}",
+        user=current_user,
+        alerts=alerts,
+        logs=logs
+    )
 
 
 # Route API pour obtenir des informations de base sur la sécurité (exemple)
